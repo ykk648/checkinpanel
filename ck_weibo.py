@@ -18,9 +18,9 @@ class WeiBo:
 
     @staticmethod
     def sign(token):
-        headers = {"User-Agent": "Weibo/52588 (iPhone; iOS 14.5; Scale/3.00)"}
+        headers = {"User-Agent": "1801-A01_7.1.1_weibo_12.11.2_android"}
         res = requests.get(
-            url=f"https://api.weibo.cn/2/checkin/add?c=iphone&{token}", headers=headers
+            url=f"https://api.weibo.cn/2/checkin/add?c=android&{token}", headers=headers
         ).json()
         if res.get("status") == 10000:
             return (
@@ -38,7 +38,7 @@ class WeiBo:
     def card(token):
         headers = {"User-Agent": "Weibo/52588 (iPhone; iOS 14.5; Scale/3.00)"}
         res = requests.get(
-            url=f"https://api.weibo.cn/2/!/ug/king_act_home?c=iphone&{token}",
+            url=f"https://api.weibo.cn/2/!/ug/king_act_home?c=android&{token}",
             headers=headers,
         ).json()
         if res.get("status") != 10000:
@@ -99,9 +99,9 @@ class WeiBo:
                 ]
             )
             sign_msg = self.sign(token=token)
-            card_msg = self.card(token=token)
-            pay_msg = self.pay(token=token)
-            msg = f"{sign_msg}\n{card_msg}\n{pay_msg}"
+            # card_msg = self.card(token=token)
+            # pay_msg = self.pay(token=token)
+            msg = f"{sign_msg}"
             msg_all += msg + "\n\n"
         return msg_all
 
